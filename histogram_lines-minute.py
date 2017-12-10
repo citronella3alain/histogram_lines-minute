@@ -9,11 +9,17 @@ filename = sys.argv[1]
 #my ($filename) = @ARGV; ?
 
 #In this first implementation, count based on starting times
-
+print (filename + "\n")
 subs = pysrt.open(filename)
 sub_count = {}
 for sub in subs:
-    #print("Start", sub.start.minutes, "\t", sub.end.minutes, "\n")
-    sub_count[sub.start.minutes] += 1
-
-for
+    if (sub.start.minutes not in sub_count.keys()):
+        sub_count[sub.start.minutes] = 1
+    else:
+        sub_count[sub.start.minutes] += 1
+Sum = 0
+print("Minute\tFrames")
+for i, j in sub_count.items():
+    print(repr(i) + " \t"+ repr(j)+ " " + j*"+");
+    Sum += j
+print("Total: " + repr(Sum))
