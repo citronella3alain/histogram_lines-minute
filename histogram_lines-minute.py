@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python
 # histogram_lines-minute.py
 import sys
 import pysrt
@@ -9,17 +9,24 @@ filename = sys.argv[1]
 #my ($filename) = @ARGV; ?
 
 #In this first implementation, count based on starting times
-print (filename + "\n")
+print (filename)
 subs = pysrt.open(filename)
 sub_count = {}
+last_minute = 0
 for sub in subs:
-    if (sub.start.minutes not in sub_count.keys()):
-        sub_count[sub.start.minutes] = 1
+    start_minute = sub.start.minutes
+    if (start_minute not in sub_count.keys()):
+        sub_count[start_minute] = 1
     else:
-        sub_count[sub.start.minutes] += 1
+        sub_count[start_minute] += 1
+    last_minute = start_minute
 Sum = 0
 print("Minute\tFrames")
-for i, j in sub_count.items():
-    print(repr(i) + " \t"+ repr(j)+ " " + j*"+");
+for i in list(range(last_minute+1)):
+    if (i not in sub_count.keys()):
+        sub_count[i] = 0
+    j = sub_count[i]
+    print ('{}\t{} {}'.format(i, j, j*'+'))
     Sum += j
-print("Total: " + repr(Sum))
+#print("Total: " + repr(Sum))
+print('Total: {}'.format(Sum))
