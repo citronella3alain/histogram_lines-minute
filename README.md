@@ -16,6 +16,7 @@ Minute	Frames
 Total: 19
 ```
 ## Built With
-* Python
+* [Python] (https://www.python.org/)
+* [pysrt] (https://pypi.python.org/pypi/pysrt) - Used to parse srt files.
 ## Author
 * Allen Mao
