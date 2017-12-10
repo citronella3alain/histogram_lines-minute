@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # histogram_lines-minute.py
 import sys
 import pysrt
